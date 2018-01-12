@@ -1,0 +1,17 @@
+<ul class="cart-list" *ngIf="cartItems.length > 0">
+  <li *ngFor="let item of cartItems">
+    <ul>
+      <li>
+        {{item.name}}
+      </li>
+      <li>
+        Cost:
+        {{item.cost}}
+      </li>
+      <li>
+        Count: 
+        {{item.count}}
+      </li>
+    </ul>
+  </li>
+</ul>
