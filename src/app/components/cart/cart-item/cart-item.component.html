@@ -1,0 +1,22 @@
+<div class="cart"  id="cart_{{item.id}}">
+  <div class="cart__text">
+    <h3>{{item.name}}</h3>
+  </div>
+  <div class="cart__payment">
+      <span class="cart__remove" (click)="onRemoveItem(item)" >×</span>
+      <span class="cart__cost">
+        To pay: {{showPrice}}$
+      </span>
+      <span class="count">
+        <form>
+          <input 
+            class="count_input" 
+            (keyup)="addNewValue(input.value)" 
+            value="{{item.count}}"
+            #input 
+            type="number">
+        </form>
+          Total Count: {{item.count}}
+      </span>
+  </div>
+</div>

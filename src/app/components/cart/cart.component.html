@@ -2,19 +2,11 @@
   <h2>
     Total Products Count: {{totalCount}}
   </h2>
-
-  <div class="cart" *ngFor="let item of productListString" id="cart_{{item.id}}">
-    <div class="cart__text">
-      <h3>{{item.name}}</h3>
-    </div>
-    <div class="cart__payment">
-        <span class="cart__cost">
-          To pay: {{item.price*item.count}}$
-        </span>
-        <span class="count">
-            Total Count: {{item.count}}
-        </span>
-    </div>
-  </div>
-  <p>To be Payed: {{totalPayment}}</p>
+  <app-cart-item
+    [item] = "item"
+    *ngFor="let item of productListString"
+    (removeItem) = "onRemoveItem($event)"
+    (changeCount) = "addNewValue($event)"
+  ></app-cart-item>
+  <p>To be Payed: {{totalPayment}} $</p>
 </div>

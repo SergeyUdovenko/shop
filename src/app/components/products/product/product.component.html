@@ -1,3 +1,14 @@
-<p>
-  product works!
-</p>
+<div class="product"  id="{{product.id}}">
+  <div class="product__info">
+    <h2>{{product.name}}</h2>
+    <h3 class="product__category">{{product.category}}</h3>
+    <p>{{product.description}}</p>
+  </div>
+  <div class="product__payment">
+    <span class="cost">
+      {{product.price}}$
+    </span>
+    <span class="quantity"></span>
+    <button class="product__buy" (click)="addToCart(product)">Add to cart</button>
+  </div>
+</div>

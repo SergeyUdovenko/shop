@@ -1,29 +1,31 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA  } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 import {ProductsModule} from './components/products/products.module';
 
 import { AppComponent } from './app.component';
-import { ProductsComponent } from './components/products/products.component';
 import { CartComponent } from './components/cart/cart.component';
 
-import { ProductService } from './services/product.service';
 import { CartService } from './services/cart.service';
+import { CartItemComponent } from './components/cart/cart-item/cart-item.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    ProductsComponent,
-    CartComponent
+    CartComponent,
+    CartItemComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    ProductsModule,
+    FormsModule
   ],
   providers: [
-    ProductService,
     CartService
    ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class AppModule { }
