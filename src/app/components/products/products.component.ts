@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, DoCheck, IterableDiffers } from '@angular/core';
 
 import { ProductService } from '../../services/product.service';
 import { CartService } from '../../services/cart.service';
+
 import { ProductComponent } from './product/product.component';
+import { CartComponent } from '../cart/cart.component';
 
 import { Product } from './product/product.model';
 
