@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, HostBinding, HostListener  } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 
 import { CartItemComponent } from './cart-item/cart-item.component';
@@ -11,44 +11,44 @@ import { Product } from '../products/product/product.model';
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent implements OnInit, OnDestroy  {
-  private sub: Subscription;
-  private prevValue: number;
   productListString: Array<Product>;
+  cartProducts: Array<Product> = [];
   totalCount: number;
   totalPayment: number;
+
+  private sub: Subscription;
+  private prevValue: number;
 
   constructor(
     private cartService: CartService
   ) { }
 
   ngOnInit() {
-    this.sub = this.cartService.channel$.subscribe(
-      data => {
-        this.totalCount = 0;
-        this.totalPayment = 0;
-        this.productListString = JSON.parse(data);
-        const result = this.productListString.map((item) => {
-          this.totalCount = this.totalCount + item.count;
-          return this.totalPayment = this.totalPayment + item.price * item.count;
-        });
-      }
-    );
+    this.sub = this.cartService.getProducts().subscribe(products => {
+      this.cartProducts = products;
+      this.totalCount = 0;
+      this.totalPayment = 0;
+      const result = this.cartProducts.map((item) => {
+        this.totalCount = Number(this.totalCount) + item.count;
+        return this.totalPayment = this.totalPayment + item.price * item.count;
+      });
+    });
+  }
+
+  setTotalValues () {
+    this.totalPayment = Number(this.cartService.totalPayment);
+    this.totalCount = Number(this.cartService.totalCount);
   }
 
   addNewValue(value) {
-    this.totalCount = this.productListString.reduce((sum, cur) => {
-      return sum += Number(cur.count);
-    }, 0);
-    this.totalPayment = this.productListString.reduce((sum, cur) => {
-      cur.totalPrice = cur.price * cur.count;
-      return sum += Number(cur.totalPrice);
-    }, 0);
+    this.cartService.onAddValue(value);
+    this.setTotalValues ();
+    console.log(this.totalCount);
   }
 
   onRemoveItem(item) {
-    this.totalCount = this.totalCount - 1;
-    const pos = this.productListString.indexOf(item);
-    this.productListString.splice(pos, 1);
+    this.cartService.onRemoveProduct(item);
+    this.setTotalValues ();
   }
 
   ngOnDestroy() {

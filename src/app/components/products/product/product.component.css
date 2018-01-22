@@ -7,6 +7,13 @@
     margin: 0 8px 15px;
     background: #fff;
 }
+.product.not-avaliable {
+    opacity: .33
+}
+.product.not-avaliable .product__buy {
+    background: #ccc;
+    pointer-events: none;
+}
 .product__payment {
     padding: 0 15px;
     max-width: 35%;

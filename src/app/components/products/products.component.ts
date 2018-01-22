@@ -1,4 +1,4 @@
-import { Component, OnInit, DoCheck, IterableDiffers } from '@angular/core';
+import { Component, OnInit, HostBinding, HostListener } from '@angular/core';
 
 import { ProductService } from '../../services/product.service';
 import { CartService } from '../../services/cart.service';
@@ -27,25 +27,7 @@ export class ProductsComponent implements OnInit {
 
   addToCart(product) {
     this.product = product;
-    const self = this;
-
-    function check() {
-      if (self.cartProducts) {
-        return self.cartProducts.some((el) => {
-          return el === self.product;
-        });
-      } else {
-        return true;
-      }
-    }
-
-    if (check()) {
-      this.product.count++;
-    } else {
-      this.cartProducts.push(this.product);
-    }
-
-    this.cartService.publishData(JSON.stringify(this.cartProducts));
+    this.cartService.onAddProduct(product);
   }
   onRemoveItem(item) {
     const pos = this.cartProducts.indexOf(item);

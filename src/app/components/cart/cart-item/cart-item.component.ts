@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 import { Product } from '../../products/product/product.model';
 
@@ -15,7 +15,7 @@ export class CartItemComponent implements OnInit {
   showPrice: number;
   constructor() { }
 
-  addNewValue(value) {
+   addNewValue(value) {
     if (value > 0) {
       this.item.count = value;
       this.showPrice = this.item.price * this.item.count;
@@ -28,7 +28,7 @@ export class CartItemComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.showPrice = this.item.price;
+    this.showPrice = this.item.price * this.item.count;
   }
 
 }

@@ -5,7 +5,7 @@
   <div class="cart__payment">
       <span class="cart__remove" (click)="onRemoveItem(item)" >×</span>
       <span class="cart__cost">
-        To pay: {{showPrice}}$
+        To pay: {{item.price * item.count | currency}}
       </span>
       <span class="count">
         <form>

@@ -15,7 +15,7 @@ export class Product {
         public category?: Category,
         public totalPrice?: number
     ) {
-        this.avaliable = avaliable || true;
+        this.avaliable = avaliable || false;
         this.id = id || null;
         this.category = category || Category.New;
         this.count = count || 1;

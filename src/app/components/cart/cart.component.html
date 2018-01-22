@@ -1,12 +1,13 @@
-<div class="cart__container" *ngIf='productListString'>
+<div class="cart__container" *ngIf='cartProducts.length > 0'>
   <h2>
     Total Products Count: {{totalCount}}
   </h2>
   <app-cart-item
     [item] = "item"
-    *ngFor="let item of productListString"
+    *ngFor="let item of cartProducts"
     (removeItem) = "onRemoveItem($event)"
     (changeCount) = "addNewValue($event)"
   ></app-cart-item>
-  <p>To be Payed: {{totalPayment}} $</p>
+  <p>To be Payed: {{totalPayment | currency}} </p>
 </div>
+<div *ngIf='cartProducts.length === 0'><ng-content></ng-content></div>
