@@ -1,4 +1,4 @@
-<div class="cart__container" *ngIf='cartProducts.length > 0'>
+<div class="cart__container" *ngIf='cartProducts.length !== 0'>
   <h2>
     Total Products Count: {{totalCount}}
   </h2>
@@ -9,5 +9,8 @@
     (changeCount) = "addNewValue($event)"
   ></app-cart-item>
   <p>To be Payed: {{totalPayment | currency}} </p>
+</div>
+<div class="cart__clear--holder" *ngIf="cartProducts.length !==0">
+  <button class="cart__clear" (click)="onClearCart()">Clear Cart</button>
 </div>
 <div *ngIf='cartProducts.length === 0'><ng-content></ng-content></div>

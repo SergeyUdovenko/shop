@@ -1,5 +1,6 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Optional } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { GeneratorService } from '../services/generator.service';
 
 import { Product } from '../components/products/product/product.model';
 
@@ -9,12 +10,17 @@ export class CartService {
   totalPayment: number;
   private product: Product;
   private products: Array<Product> = [];
-  private incomingProducts: Array<Product> = [];
+  private incomingProducts: Array<Product> = JSON.parse(localStorage.getItem('cart')) || [];
   private cartProducts: BehaviorSubject<Array<Product>> = new BehaviorSubject(this.products);
+
+  constructor(
+    @Optional() private generatorService: GeneratorService
+  ) {}
 
   onAddProduct(product) {
     const self = this;
     this.product = product;
+    this.generatorService.stringGenerate(10);
     function check() {
       if (self.incomingProducts) {
         return self.incomingProducts.some((el) => {
@@ -38,20 +44,31 @@ export class CartService {
     }, 0);
     this.totalPayment = this.incomingProducts.reduce((sum, cur) => {
       cur.totalPrice = cur.price * cur.count;
-      return sum += Number(cur.totalPrice);
+      return sum = Number(sum) + Number(cur.totalPrice);
     }, 0);
   }
 
   onAddValue(value) {
     this.totalCountsCheck();
-    console.log(this.totalCount);
   }
 
   onRemoveProduct(item) {
     item.count = 1;
     const pos = this.incomingProducts.indexOf(item);
     this.incomingProducts.splice(pos, 1);
+    const text = JSON.stringify( this.incomingProducts );
+    localStorage.setItem('cart', text);
     this.totalCountsCheck();
+    this.cartProducts.next(this.incomingProducts);
+  }
+
+  clearCart() {
+    this.incomingProducts.forEach((val) => {
+      return val.count = 1;
+    });
+    this.incomingProducts = [];
+    this.totalCountsCheck();
+    this.cartProducts.next(this.incomingProducts);
   }
 
   getProducts () {

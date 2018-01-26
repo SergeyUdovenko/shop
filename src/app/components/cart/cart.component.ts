@@ -3,6 +3,7 @@ import { Subscription } from 'rxjs/Subscription';
 
 import { CartItemComponent } from './cart-item/cart-item.component';
 import { CartService } from '../../services/cart.service';
+import { LocalStorageService } from '../../services/local-storage.service';
 import { Product } from '../products/product/product.model';
 
 @Component({
@@ -20,7 +21,8 @@ export class CartComponent implements OnInit, OnDestroy  {
   private prevValue: number;
 
   constructor(
-    private cartService: CartService
+    private cartService: CartService,
+    private localStorageService: LocalStorageService
   ) { }
 
   ngOnInit() {
@@ -43,12 +45,14 @@ export class CartComponent implements OnInit, OnDestroy  {
   addNewValue(value) {
     this.cartService.onAddValue(value);
     this.setTotalValues ();
-    console.log(this.totalCount);
   }
 
   onRemoveItem(item) {
     this.cartService.onRemoveProduct(item);
     this.setTotalValues ();
+  }
+  onClearCart() {
+    this.cartService.clearCart();
   }
 
   ngOnDestroy() {

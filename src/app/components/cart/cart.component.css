@@ -2,3 +2,14 @@
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     padding: 0 15px;
 }
+.cart__clear--holder {
+    padding: 15px;
+}
+.cart__clear {
+    border: none;
+    background: #90ee90;
+    padding: 5px 10px;
+    border-radius: 3px;
+    color: black;
+    cursor: pointer;
+}

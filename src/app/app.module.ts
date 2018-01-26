@@ -8,14 +8,19 @@ import { AppComponent } from './app.component';
 import { CartComponent } from './components/cart/cart.component';
 
 import { CartService } from './services/cart.service';
+import { LocalStorageService } from './services/local-storage.service';
+import { GeneratorService } from './services/generator.service';
+import { ConfigOptionsService } from './services/config-options.service';
 import { CartItemComponent } from './components/cart/cart-item/cart-item.component';
+import { LoginformComponent } from './components/loginform/loginform.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     CartComponent,
-    CartItemComponent
+    CartItemComponent,
+    LoginformComponent
   ],
   imports: [
     BrowserModule,
@@ -23,7 +28,10 @@ import { CartItemComponent } from './components/cart/cart-item/cart-item.compone
     FormsModule
   ],
   providers: [
-    CartService
+    CartService,
+    LocalStorageService,
+    GeneratorService,
+    ConfigOptionsService
    ],
   bootstrap: [AppComponent],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
