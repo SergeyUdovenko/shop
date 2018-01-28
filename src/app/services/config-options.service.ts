@@ -15,6 +15,10 @@ export class ConfigOptionsService {
     return getSettings;
   }
 
+  clear() {
+    localStorage.clear();
+  }
+
   constructor() { }
 
 }

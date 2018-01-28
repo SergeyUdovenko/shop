@@ -1,11 +1,12 @@
-<form *ngIf="!info">
+<form *ngIf="!info" appClickDecorator>
   <input type="text" placeholder="Login" #login>
   <input type="text" placeholder="Email" #email>
   <input type="password" placeholder="Password" #password>
   <button (click)="CreateNewUser({login: login.value, email: email.value, password: password.value})">add</button>
 </form>
-<div class="info" *ngIf="info">
+<div class="info" *ngIf="info" appClickDecorator="1px solid red">
   <p>Current login: {{info.login}},</p>
   <p>Current password: {{info.password}}</p>
   <p>Current email: {{info.email}}</p>
+  <button class="logout" (click)="onLogout()">Logout</button>
 </div>

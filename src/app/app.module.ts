@@ -9,10 +9,10 @@ import { CartComponent } from './components/cart/cart.component';
 
 import { CartService } from './services/cart.service';
 import { LocalStorageService } from './services/local-storage.service';
-import { GeneratorService } from './services/generator.service';
 import { ConfigOptionsService } from './services/config-options.service';
 import { CartItemComponent } from './components/cart/cart-item/cart-item.component';
 import { LoginformComponent } from './components/loginform/loginform.component';
+import { ClickDecoratorDirective } from './directives/click-decorator.directive';
 
 
 @NgModule({
@@ -20,7 +20,8 @@ import { LoginformComponent } from './components/loginform/loginform.component';
     AppComponent,
     CartComponent,
     CartItemComponent,
-    LoginformComponent
+    LoginformComponent,
+    ClickDecoratorDirective
   ],
   imports: [
     BrowserModule,
@@ -30,7 +31,6 @@ import { LoginformComponent } from './components/loginform/loginform.component';
   providers: [
     CartService,
     LocalStorageService,
-    GeneratorService,
     ConfigOptionsService
    ],
   bootstrap: [AppComponent],

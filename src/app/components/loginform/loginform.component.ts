@@ -20,5 +20,9 @@ export class LoginformComponent implements OnInit {
     this.optionService.SetSettings(data);
     this.info = this.optionService.GetSettings();
   }
+  onLogout() {
+    this.optionService.clear();
+    this.info = this.optionService.GetSettings();
+  }
 
 }

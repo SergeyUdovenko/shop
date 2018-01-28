@@ -1,6 +1,5 @@
 import { Injectable, Optional } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { GeneratorService } from '../services/generator.service';
 
 import { Product } from '../components/products/product/product.model';
 
@@ -14,13 +13,11 @@ export class CartService {
   private cartProducts: BehaviorSubject<Array<Product>> = new BehaviorSubject(this.products);
 
   constructor(
-    @Optional() private generatorService: GeneratorService
   ) {}
 
   onAddProduct(product) {
     const self = this;
     this.product = product;
-    this.generatorService.stringGenerate(10);
     function check() {
       if (self.incomingProducts) {
         return self.incomingProducts.some((el) => {
