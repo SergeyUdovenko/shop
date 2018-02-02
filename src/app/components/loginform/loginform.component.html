@@ -2,7 +2,7 @@
   <input type="text" placeholder="Login" #login>
   <input type="text" placeholder="Email" #email>
   <input type="password" placeholder="Password" #password>
-  <button (click)="CreateNewUser({login: login.value, email: email.value, password: password.value})">add</button>
+  <button (click)="createNewUser({login: login.value, email: email.value, password: password.value})">add</button>
 </form>
 <div class="info" *ngIf="info" appClickDecorator="1px solid red">
   <p>Current login: {{info.login}},</p>

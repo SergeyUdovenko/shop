@@ -12,22 +12,22 @@ export class CartService {
   private incomingProducts: Array<Product> = JSON.parse(localStorage.getItem('cart')) || [];
   private cartProducts: BehaviorSubject<Array<Product>> = new BehaviorSubject(this.products);
 
+  private check = function (){
+    if (this.incomingProducts) {
+      return this.incomingProducts.some((el) => {
+        return el === this.product;
+      });
+    } else {
+      return true;
+    }
+  };
+
   constructor(
   ) {}
 
   onAddProduct(product) {
-    const self = this;
     this.product = product;
-    function check() {
-      if (self.incomingProducts) {
-        return self.incomingProducts.some((el) => {
-          return el === self.product;
-        });
-      } else {
-        return true;
-      }
-    }
-    if (check()) {
+    if (this.check()) {
       this.product.count++;
     } else {
       this.incomingProducts.push(this.product);

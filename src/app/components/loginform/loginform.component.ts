@@ -16,7 +16,7 @@ export class LoginformComponent implements OnInit {
   ngOnInit() {
     this.info = this.optionService.GetSettings();
   }
-  CreateNewUser(data) {
+  createNewUser(data) {
     this.optionService.SetSettings(data);
     this.info = this.optionService.GetSettings();
   }

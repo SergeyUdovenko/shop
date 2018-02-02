@@ -7,14 +7,6 @@ export class ConstantsService {
     Version: '0.1.0',
     Owner: 'Anonymos'
   };
-  getData() {
-    const Constants = {
-      App: 'Shop',
-      Version: '0.1.0',
-      Owner: 'Anonymos'
-    };
-    return Constants;
-  }
   constructor() { }
 
 }
