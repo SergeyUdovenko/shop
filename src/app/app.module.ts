@@ -13,7 +13,6 @@ import { ConfigOptionsService } from './services/config-options.service';
 import { CartItemComponent } from './components/cart/cart-item/cart-item.component';
 import { LoginformComponent } from './components/loginform/loginform.component';
 import { ClickDecoratorDirective } from './directives/click-decorator.directive';
-import { OrderByPipe } from './pipes/order-by.pipe';
 
 
 @NgModule({
@@ -22,8 +21,7 @@ import { OrderByPipe } from './pipes/order-by.pipe';
     CartComponent,
     CartItemComponent,
     LoginformComponent,
-    ClickDecoratorDirective,
-    OrderByPipe
+    ClickDecoratorDirective
   ],
   imports: [
     BrowserModule,

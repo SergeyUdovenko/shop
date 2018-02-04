@@ -19,7 +19,10 @@ import { Product } from './product/product.model';
   providers: [{
     provide: ConfigOptionsService, useClass: ConstantsService
   },
-{ provide: countOf, useFactory: GeneratorService(8) }]
+  {
+    provide: countOf, useFactory: GeneratorService(8)
+  }
+]
 
 })
 export class ProductsComponent implements OnInit {
@@ -34,7 +37,7 @@ export class ProductsComponent implements OnInit {
     public productService: ProductService,
     private cartService: CartService,
     private constantsService: ConfigOptionsService,
-    @Inject(countOf) private CountOf: string
+    @Inject(countOf) private CountOf: string,
   ) { }
 
   addToCart(product) {

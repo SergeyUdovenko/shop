@@ -6,13 +6,16 @@ import { ProductService } from '../../services/product.service';
 import { ConstantsService } from '../../services/constants.service';
 import { ConfigOptionsService } from '../../services/config-options.service';
 
+import {OrderByPipe} from '../../pipes/order-by.pipe';
+
 @NgModule({
   imports: [
     CommonModule
   ],
   declarations: [
     ProductsComponent,
-    ProductComponent
+    ProductComponent,
+    OrderByPipe
   ],
   providers: [
     ProductService,

@@ -1,6 +1,11 @@
 # Shop
 
 Added Add to Cart behaviour
-Added Partially Change Count strategy
+Added Change Count strategy
 Added Total Count and Total Price in Cart
-Added partial ability to remove components from cart
+Added ability to remove components from cart
+
+---pipes---
+use currency pipe in cart component,
+use async pipe to show data,
+use custom pipe to sort data with bolean parameter for changing direction,

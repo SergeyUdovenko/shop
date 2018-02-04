@@ -1,7 +1,7 @@
 <div class="product__container">
   
   <app-product
-    *ngFor="let product of products"
+    *ngFor="let product of products | orderBy"
     [product] = "product"
     (addProduct) = "addToCart($event)"
     (removeItem) = "onRemoveItem($event)"
