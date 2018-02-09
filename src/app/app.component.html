@@ -1,8 +1,16 @@
 <div class="wrapper">
-    <app-loginform></app-loginform>
-    <app-products></app-products>
-    <app-cart>Cart is empty</app-cart>
-    <div class="time-holder">
-        Time: {{ time | async | date: 'mediumTime'}}
-    </div>
+  <a routerLink="/homees"> test</a>
+  <app-loginform></app-loginform>
+  <app-products></app-products>
+  <app-cart>Cart is empty</app-cart>
+  <div class="time-holder">
+    Time: {{ time | async | date: 'mediumTime'}}
+  </div>
+
+  <router-outlet 
+    (activate)='onActivate($event)' 
+    (deactivate)='onDeactivate($event)'>
+  </router-outlet>
+  <!-- Routed views go here -->
+
 </div>
