@@ -5,6 +5,16 @@
     display: flex;
     flex-wrap: wrap;
 }
+
+h3 {
+    font-weight: normal;
+    display: inline-block;
+    padding: 10px;
+    background: rgb(148, 247, 164);
+    border: 1px solid #000;
+    border-radius: 5px;
+}
+
 app-product {
     width: 33.33%;
     transition: all 0.3s ease-in-out;

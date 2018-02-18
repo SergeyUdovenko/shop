@@ -10,14 +10,31 @@ const ProductList: Array<Product> = [
   new Product(5, 'Demo Product4', 'this is demo product4', 75, 1)
 ];
 
-@Injectable()
+const ProductListPromise = Promise.resolve(ProductList);
 
+@Injectable()
 export class ProductService {
 
   constructor() { }
 
-  getProduct(): Array<Product> {
-    return ProductList;
+  getProducts(): Promise<Product[]> {
+    return ProductListPromise;
+  }
+
+  getProduct(id: number | string): Promise<Product> {
+    return this.getProducts()
+      .then(products => products.find(product => product.id === +id))
+      .catch(() => Promise.reject('Error in getTask method'));
+  }
+  addProduct(product: Product): void {
+    ProductList.push(product);
+  }
+  updateProduct(product: Product): void {
+    const i = ProductList.findIndex(t => t.id === product.id);
+
+    if (i > -1) {
+      ProductList.splice(i, 1, product);
+    }
   }
 
 }

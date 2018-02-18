@@ -1,4 +1,4 @@
-<div class="product" [ngClass] = "product.avaliable?'avaliable':'not-avaliable'"  id="{{product.id}}">
+<div class="product" [ngClass]="product.avaliable?'avaliable':'not-avaliable'" id="{{product.id}}">
   <div class="product__info">
     <h2>{{product.name}}</h2>
     <h3 class="product__category">{{product.category}}</h3>
@@ -10,5 +10,8 @@
     </span>
     <span class="quantity"></span>
     <button class="product__buy" (click)="addToCart(product)">Add to cart</button>
+    <button class="product__buy btn__edit" (click)="editProduct()">
+      Edit
+    </button>
   </div>
 </div>

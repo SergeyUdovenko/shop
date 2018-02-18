@@ -10,6 +10,7 @@ import { Product } from './product.model';
 export class ProductComponent implements OnInit {
   @Input()  product: Product;
   @Output() addProduct: EventEmitter<Product> = new EventEmitter<Product>();
+  @Output() edit = new EventEmitter<Product>();
 
   @HostBinding('style.transform') boxShadow = 'scale(1,1)';
   @HostListener('mouseenter', ['$event']) onMouseEnter(event) {
@@ -26,6 +27,9 @@ export class ProductComponent implements OnInit {
   addToCart() {
     const product = this.product;
     this.addProduct.emit(product);
+  }
+  editProduct() {
+    this.edit.emit(this.product);
   }
 
 

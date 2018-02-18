@@ -53,8 +53,6 @@ export class CartService {
     item.count = 1;
     const pos = this.incomingProducts.indexOf(item);
     this.incomingProducts.splice(pos, 1);
-    const text = JSON.stringify( this.incomingProducts );
-    localStorage.setItem('cart', text);
     this.totalCountsCheck();
     this.cartProducts.next(this.incomingProducts);
   }

@@ -1,13 +1,11 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 
 import { CartItemComponent } from './cart-item/cart-item.component';
-import { CartService } from '../../services/cart.service';
-import { LocalStorageService } from '../../services/local-storage.service';
+import { CartService, LocalStorageService } from '../../services';
 import { Product } from '../products/product/product.model';
 
 @Component({
-  selector: 'app-cart',
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.css']
 })
@@ -22,7 +20,7 @@ export class CartComponent implements OnInit, OnDestroy  {
 
   constructor(
     private cartService: CartService,
-    private localStorageService: LocalStorageService
+    private localStor: LocalStorageService
   ) { }
 
   ngOnInit() {
@@ -32,6 +30,7 @@ export class CartComponent implements OnInit, OnDestroy  {
       this.totalPayment = 0;
       const result = this.cartProducts.map((item) => {
         this.totalCount = Number(this.totalCount) + item.count;
+        this.localStor.setItem(this.totalCount, 'TotalCount');
         return this.totalPayment = this.totalPayment + item.price * item.count;
       });
     });
@@ -40,6 +39,7 @@ export class CartComponent implements OnInit, OnDestroy  {
   setTotalValues () {
     this.totalPayment = Number(this.cartService.totalPayment);
     this.totalCount = Number(this.cartService.totalCount);
+    this.localStor.setItem(this.totalCount, 'TotalCount');
   }
 
   addNewValue(value) {

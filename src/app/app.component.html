@@ -1,16 +1,21 @@
-<div class="wrapper">
-  <a routerLink="/homees"> test</a>
-  <app-loginform></app-loginform>
-  <app-products></app-products>
-  <app-cart>Cart is empty</app-cart>
+<div class="wrapper" [ngClass] = "this.loginChecker ? 'logged-in': '' ">
+  <ul class="menu">
+    <li routerLinkActive="active">
+      <a routerLink="/login" class="link__logn">Login</a>
+    </li>
+    <li routerLinkActive="active">
+      <a routerLink="/product" class="link__product">Products</a>
+    </li>
+    <li routerLinkActive="active">
+      <a routerLink="/cart">Cart</a>
+    </li>
+  </ul>
+
+  <router-outlet (activate)='onActivate($event)' (deactivate)='onDeactivate($event)'>
+  </router-outlet>
+  <!-- Routed views go here -->
   <div class="time-holder">
     Time: {{ time | async | date: 'mediumTime'}}
   </div>
-
-  <router-outlet 
-    (activate)='onActivate($event)' 
-    (deactivate)='onDeactivate($event)'>
-  </router-outlet>
-  <!-- Routed views go here -->
 
 </div>

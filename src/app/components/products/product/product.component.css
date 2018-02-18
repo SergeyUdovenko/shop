@@ -50,6 +50,8 @@
     border-radius: 3px;
     text-transform: uppercase;
     cursor: pointer;
+    margin: 0 0 15px;
+    width: 100%;
 }
 .product__buy:hover {
     box-shadow: inset 0 0 3px #000;

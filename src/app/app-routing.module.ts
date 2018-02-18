@@ -1,18 +1,28 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, ExtraOptions } from '@angular/router';
 
-import { PageNotFoundComponent, ProductsComponent } from './components';
+import { PageNotFoundComponent, ProductsComponent, CartComponent, LoginformComponent } from './components';
 
 const routes: Routes = [
     {
         path: '',
-        redirectTo: '/home',
+        redirectTo: '/product',
         pathMatch: 'full'
     },
 
     {
         path: 'product',
         component: ProductsComponent,
+    },
+
+    {
+        path: 'cart',
+        component: CartComponent,
+    },
+
+    {
+        path: 'login',
+        component: LoginformComponent,
     },
 
     {
